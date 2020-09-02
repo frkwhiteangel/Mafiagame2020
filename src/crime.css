@@ -1,0 +1,68 @@
+.krim_boks {
+  clear: both;
+  position: relative;
+
+  border: 1px solid #232323;
+  background-color: #222222;
+  margin: 0.7em 0 0;
+  background-repeat: no-repeat;
+  background-position: 0;
+  height: 75px;
+}
+.krim_content {
+  float:left;
+  padding: 0px 0 0 5px;
+}
+
+.krim_image {
+  float:left;
+}
+
+
+.krim_image img, .krim_image, .crimeImage {
+  width: 80px;
+  height: 74px;
+}
+
+.krim_boks  {
+  color: #CCCCCC;
+}
+
+.krim_wait {
+  right: 8px;
+  bottom: 8px;
+}
+
+.krim_info {
+  bottom: 8px;
+}
+
+.krim_rank {
+  bottom: 23px;
+  right: 8px;
+}
+
+
+.krim_strength {
+  bottom: 23px;
+}
+.krim_cash {
+  right: 8px;
+  top: 8px;
+  font-weight: bold;
+}
+
+.krim_boks p, .krim_boks h4 {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+
+.krim_boks:hover {
+  background: rgb(24,24,24);
+}
+
+.faded {
+  opacity:0.8;
+  cursor:default!important;
+}

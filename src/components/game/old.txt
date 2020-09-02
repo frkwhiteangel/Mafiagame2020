@@ -1,0 +1,53 @@
+<div className="col-12 box nopad">
+	<div className="box_header">Enkel kriminalitet          {this.state.showMessage} - </div>
+		{
+			this.state.showMessage && <div className={'alert alert-' + this.state.classes}>{this.state.message}</div>
+		}
+		
+		{
+						this.props.time < this.state.totime && !this.state.showmessage && 	<div className="alert alert-info"><Countdown words='til du kan gjøre ny kriminalitet' timeTillDate={this.state.totime} /></div>
+		}
+		
+	{
+		this.props.time >= this.state.totime && 	<div className="content">
+		<div>
+		
+		
+		<table className="">
+		<thead>
+				<tr>
+				<th>Handling</th>
+				<th>Sannsynlighet</th>
+				<th>XP</th>
+				<th>Ventetid</th>
+	
+				</tr>
+		</thead>
+<tbody>		
+{
+  this.state.crimeOptions.map((val, index) => {
+    return (
+      <tr key={index}  onClick={() => {this.PerformCrime(val.id)}}>
+       <td> { val.text }</td>
+	   	<td>{val.chance}%</td>
+				<td>{val.xp}</td>
+				<td>2min 5sec</td>
+      </tr>
+     );
+  })
+}
+
+			</tbody>	
+		</table>
+		
+		
+	
+		</div>
+	</div>
+		
+	}
+	
+	
+	
+
+</div>_co

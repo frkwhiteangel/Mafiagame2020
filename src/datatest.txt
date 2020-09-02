@@ -1,0 +1,65 @@
+import React, {Component} from 'react';
+//import Component from 'react-dom';
+import SideBarRight from './components/game/sideBarRight.jsx';
+import SideBarLeft from './components/game/sideBarLeft.jsx';
+import Crime from './components/game/crime.jsx';
+import Login from './components/login/login.jsx';
+import './gameComponent.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter} from "react-router-dom";
+
+
+class GameComponent extends Component{
+ constructor() {
+    super();
+    this.state = {
+	userData: {
+		user: {cash:0, bank:0, weapon:'', username: 'test', locationname: 'Bankok',
+		defence: 0},
+		rankbar: {rankpercent: 50, rank: 'Mafia'},
+		}
+	}
+	
+	
+	
+	
+  }
+
+
+render() {
+    return (
+	<div className="main">
+//	<BrowserRouter>		
+	<div className="sidebar left">
+				<SideBarLeft/>
+
+	</div>
+	<div className="middleContentHolder">
+ //<Routes>
+    <Route path="/" element={<Crime />} />
+    <Route path="/crime" element={<Crime />} />
+	    <Route path="/login" element={<Login />} />
+		
+//  </Routes>
+
+		
+		<div className="col-8">
+			<div className="content">
+			<div className="header"><span>Test...</span></div>
+			
+			</div>
+		</div>
+	</div>
+	<div className="sidebar right">
+		<SideBarRight UserData={this.state.userData}/>
+		</div>
+	//	</BrowserRouter>
+	</div>
+	);
+  }
+	
+}
+
+
+
+export default GameComponent;

@@ -1,0 +1,82 @@
+import React, {Component} from 'react';
+//import Component from 'react-dom';
+import SideBarRight from './components/game/sideBarRight.jsx';
+import SideBarLeft from './components/game/sideBarLeft.jsx';
+import Crime from './components/game/crime.jsx';
+import Login from './components/login/login.jsx';
+import './gameComponent.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter} from "react-router-dom";
+import axios from "axios";
+
+class GameComponent extends Component{
+ constructor() {
+    super();
+    this.state = {
+		timed: 90,
+		user: {username: 'testmega'},
+		rankbar: {percent:0},
+	}
+	
+  }
+  
+   componentWillMount() {
+	//   this.FetchDetails();
+	 /*  	const interval = setInterval(() => {
+				   this.FetchDetails();
+		}, 5000);*/
+   }
+ 
+  
+  
+	FetchDetails() {
+				  axios.get(`http://localhost:3000/getuser`,{withCredentials: true})
+			  .then(res => {
+				  res = res.data;
+				//	this.setState({user: res.user});
+				//	this.setState({rankbar: res.user.rankdata});
+			  });
+
+	}
+	
+
+	Dataclick = (() => {
+		console.log("timed:",this.state.timed);
+					console.log("now user:",this.state.user);
+	});
+
+render() {
+    return (
+	<div className="main">
+			<input type="submit" className="btn btn-md" onClick={this.Dataclick} value="test"/>
+
+	<div className="sidebar left">
+				<SideBarLeft/>
+
+	</div>
+	<div className="middleContentHolder">
+     <Route path="/" element={<Crime />} />
+    <Route path="/test" element={<Crime />} />
+    <Route path="/crime" element={<Crime />} />
+    <Route path="/crime" element={<Crime />} />
+
+
+		<div className="col-8">
+			<div className="content">
+			<div className="header"><span>Test...</span></div>
+			
+			</div>
+		</div>
+	</div>
+	<div className="sidebar right">
+		<SideBarRight element={<SideBarRight user={this.state.user}  timed={this.state.timed} />} />
+		</div>
+	</div>
+	);
+  }
+	
+}
+
+
+
+export default GameComponent;

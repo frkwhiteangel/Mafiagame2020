@@ -1,0 +1,31 @@
+import React, {Component} from 'react';
+//import Component from 'react-dom';
+import './../../gameComponent.css';
+
+
+class SideBarRight extends Component{
+ constructor(props) {
+    super(props);	
+  }
+
+render() {
+
+    return (
+		<div className="content_sidebar">
+			<div className="header"><span> time is: {this.props.timed} - </span></div>
+			<ul>
+           /*     <li><img title="Rank" className="header_icon" src="image/icons/star.png"/> <a href="?side=wiki#rank">{this.props.Rankbar}</a></li>
+                <li><img title="Penger" className="header_icon" src="image/icons/money.png"/> <a href="?side=banken">{this.props.User} kr</a></li>
+                <li><img title="By" className="header_icon" src="image/icons/building.png"/> <a href="?side=flyplass">{this.props.User}</a></li>
+                <li><img title="FP" className="header_icon" src="image/icons/shield.png"/> <a href="?side=drap&amp;p=fp">{this.props.User} stk</a> </li>
+                <li><img title="FP" className="header_icon" src="image/icons/chart_line.png"/> Rankbar: {this.props.Rankbar} %</li>*/
+				
+            </ul>
+			
+		</div>
+	);
+  }
+}
+
+
+export default SideBarRight;

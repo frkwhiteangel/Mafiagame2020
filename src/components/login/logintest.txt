@@ -1,0 +1,63 @@
+import React, {Component} from 'react';
+//import Component from 'react-dom';
+import './../../gameComponent.css';
+import axios from 'axios';
+
+
+
+class Login extends Component{
+ constructor() {
+    super();
+    this.state = {
+		color: "red",
+		username : '',
+		user: {id:0,}
+	}
+  }
+  
+  
+  
+changeData = (event) => {
+	this.setState({username: event.target.value});
+}
+
+    PerformLogin = () => {
+		const username = this.state.username;
+		
+		if (username == '') {
+			console.log("please enter username");
+		} else {
+				  console.log("username of login: ",this.state.username);
+				   axios.post(`https://jsonplaceholder.typicode.com/users`, { username })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+			  
+  
+		}
+		
+		
+  }
+
+render() {
+    return (
+		<div id="test">
+		<span>Login template</span>
+		<div className="loginTemplateHolder">
+		<input type="text" value={this.state.username} onChange={this.changeData}  placeholder="username"/>
+		<input type="submit" className="btn btn-md" onClick={this.PerformLogin} value="Login"/>
+		</div>
+		</div>
+	);
+  }
+  
+  
+  
+
+  
+  
+}
+
+
+export default Login;

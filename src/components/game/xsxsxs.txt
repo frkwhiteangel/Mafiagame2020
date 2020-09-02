@@ -1,0 +1,83 @@
+import React, {Component} from 'react';
+//import Component from 'react-dom';
+import './../../gameComponent.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { Countdown }  from './timer.jsx';
+
+import axios from "axios";
+
+library.add(faLock);
+
+
+class Crime extends Component{
+    constructor(props) {
+		console.log("its loaded. crime is loaded constructor");
+        super(props);
+    this.state = {
+		color: "red",
+		crimeOptions : [],
+		HappyHourWait : {value:90},
+		message : '',
+		showMessage : false,
+		waitTimer : 0,
+		totime : 0,
+		now : 0,
+		classes : 'totalchaos',
+
+	}
+  }
+  
+  
+  
+  componentWillMount() {
+	  console.log("props:",this.props);
+	  
+	//  this.props.loadtimers;
+	  this.LoadCrime();		
+	  this.setState({totime: this.props.totime});
+
+  }
+		completionist = () => <span>You are good to go!</span>;
+
+	LoadCrime() {
+	 axios.get(`http://localhost:3000/crime`,{withCredentials: true})
+      .then(res => {
+		  console.log("loading crime response");
+        console.log(res);
+        this.setState({crimeOptions : res.data});
+	  });
+	}
+
+
+  PerformCrime(crimeId) {
+	  console.log("clicked event with value:",crimeId);
+	 axios.post(`http://localhost:3000/crime`,{ id : crimeId },{withCredentials: true})
+      .then(res => {
+		  var detailsResponse = res.data;
+		  console.log("perform crime data",detailsResponse);
+		  this.setState({totime: detailsResponse.time});
+		  this.setState({message: detailsResponse.message});
+		  this.setState({showMessage: true});
+		  this.setState({classes: (detailsResponse.type ? 'success' : 'danger')});
+		this.props.loadtimers();
+		this.LoadCrime();
+      })
+  }
+
+render() {
+
+    return (
+	    <React.Fragment>
+	
+		<h1>CRIME</h1>
+
+	
+    </React.Fragment>
+	);
+  }
+}
+
+
+export default Crime;
